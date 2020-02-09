@@ -22,12 +22,12 @@ CVPR 2017에 나왔던 논문인데 현재 나오는 Noisy label관련된 논문
 ## Backward
 Backward Correction Loss는 Cross Entropy를 통해 계산 된 loss값에, Transition Matrix의 inverse를 곱해줍니다.(Transition Matrix가 Non-singular 함을 전제로 합니다)
 
-![theorem1_1](./2020-02-09/img1.PNG)
+![theorem1_1](/_posts/2020-02-09/img1.PNG)
 
 이를 논문의 Theorem 1에서 $$\tilde{y}$$ (Noise가 있는 현재 라벨)을 target으로 하는 loss에 Transition Matrix의 Inverse를 곱해준 식이 곧,
 $$y$$ (True Label)에 대한 Loss와 같다는 것을 증명해줍니다.
 
-![theorem1_2](./2020-02-09/img2.PNG)
+![theorem1_2](/_posts/2020-02-09/img2.PNG)
 
 첫번째 항은 현재 있는 Noisy label에 대한 backward loss를 나타내고 있으며, 마지막 항은 실제 True Label에 대한 Loss를 나타냅니다. Label Transition Matrix $$T$$를 이용해 식이 변화하는 것을 보여주며, 이 두 항이 동일함을 증명하고 있습니다.
 
@@ -35,14 +35,14 @@ $$y$$ (True Label)에 대한 Loss와 같다는 것을 증명해줍니다.
 ## Forward
 Forward Correction Loss는 모델이 Prediction한 예측값에 곧바로 Transition Matrix를 곱합니다.
 이 역시 True Label에 대한 loss의 기대값과 forward loss의 기대값이 같음을 증명합니다.
-![theorem2_1](./2020-02-09/img3.PNG)
+![theorem2_1](/_posts/2020-02-09/img3.PNG)
 
 -------------
 ## Label Transition Matrix Estimation
 앞 선 두 forward와 backward 알고리즘은 Label Transition 정보를 다 알고있다는 가정하에 수행 가능 한 알고리즘 입니다.
 논문에서는 이 True Label Transition을 알고있기 어려우니 이를 데이터셋에서 Estimation하는 방법을 제안합니다.
 
-![theorem3_1](./2020-02-09/img4.PNG)
+![theorem3_1](/_posts/2020-02-09/img4.PNG)
 
 학습된 모델로 충분히 큰 특정 데이터 $$X$$ 에 대해 estimation을 수행하는데 이 $$X$$는 학습데이터 그대로 사용하여도 되고 같은 분포를 가진 데이터라면 라벨이 없는 데이터도 된다고 합니다.
 특정 Class $$C$$에 대해서 가장 높은 probability를 가진 Best Sample을 선정한 후, 이 샘플이 $$C$$가 아닌 다른 클래스 $$\grave{C}$$ 에 대해 가진 probability를 Noisy Ratio로 가정하고 $$T_{C\grave{C}}$$에 이 probability를 입력합니다.
