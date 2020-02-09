@@ -10,7 +10,7 @@ CVPR 2017에 나왔던 논문인데 현재 나오는 Noisy label관련된 논문
 
 
 논문은 데이터셋에 포함된 Noise 정보 Label Transition Matrix를 안다는 가정하에 이를 이용해서 Cross Entropy loss의 최적화 방향을 True label방향으로 살짝 바꾸어줍니다.
-여기서 Label Transition Matrix란 클래스 개수가 $$C$$ 일때, C x C 크기의 Matrix이며, C_12는 라벨1이 라벨2로 바뀌어있을 확률을 나타내는 행렬입니다.
+여기서 Label Transition Matrix란 클래스 개수가 $$C$$ 일때, $$C$$ x $$C$$ 크기의 Matrix이며, $$C_12$$는 라벨1이 라벨2로 바뀌어있을 확률을 나타내는 행렬입니다.
 논문은 이 Transition Matrix를 중점적으로 활용하여 loss를 교정합니다.
 
 논문은 총 3가지 내용을 얘기합니다.
@@ -24,12 +24,12 @@ Backward Correction Loss는 Cross Entropy를 통해 계산 된 loss값에, Trans
 
 ![theorem1_1](./2020-02-09/img1.PNG)
 
-이를 논문의 Theorem 1에서 $\tilde{y}$ (Noise가 있는 현재 라벨)을 target으로 하는 loss에 Transition Matrix의 Inverse를 곱해준 식이 곧,
-$y$ (True Label)에 대한 Loss와 같다는 것을 증명해줍니다.
+이를 논문의 Theorem 1에서 $$\tilde{y}$$ (Noise가 있는 현재 라벨)을 target으로 하는 loss에 Transition Matrix의 Inverse를 곱해준 식이 곧,
+$$y$$ (True Label)에 대한 Loss와 같다는 것을 증명해줍니다.
 
 ![theorem1_2](./2020-02-09/img2.PNG)
 
-첫번째 항은 현재 있는 Noisy label에 대한 backward loss를 나타내고 있으며, 마지막 항은 실제 True Label에 대한 Loss를 나타냅니다. Label Transition Matrix를 이용해 식이 변화하는 것을 보여주며, 이 두 항이 동일함을 증명하고 있습니다.
+첫번째 항은 현재 있는 Noisy label에 대한 backward loss를 나타내고 있으며, 마지막 항은 실제 True Label에 대한 Loss를 나타냅니다. Label Transition Matrix $$T$$를 이용해 식이 변화하는 것을 보여주며, 이 두 항이 동일함을 증명하고 있습니다.
 
 -------------
 ## Forward
@@ -44,12 +44,12 @@ Forward Correction Loss는 모델이 Prediction한 예측값에 곧바로 Transi
 
 ![theorem3_1](./2020-02-09/img4.PNG)
 
-학습된 모델로 충분히 큰 특정 데이터 $X$ 에 대해 estimation을 수행하는데 이 $X$는 학습데이터 그대로 사용하여도 되고 같은 분포를 가진 데이터라면 라벨이 없는 데이터도 된다고 합니다.
-특정 Class $C$에 대해서 가장 높은 probability를 가진 Best Sample을 선정한 후, 이 샘플이 $C$가 아닌 다른 클래스 $\grave{C}$ 에 대해 가진 probability를 Noisy Ratio로 가정하고 $T_C\grave{C}$에 이 probability를 입력합니다.
+학습된 모델로 충분히 큰 특정 데이터 $$X$$ 에 대해 estimation을 수행하는데 이 $$X$$는 학습데이터 그대로 사용하여도 되고 같은 분포를 가진 데이터라면 라벨이 없는 데이터도 된다고 합니다.
+특정 Class $$C$$에 대해서 가장 높은 probability를 가진 Best Sample을 선정한 후, 이 샘플이 $$C$$가 아닌 다른 클래스 $$\grave{C}$$ 에 대해 가진 probability를 Noisy Ratio로 가정하고 $$T_C\grave{C}$$에 이 probability를 입력합니다.
 
-이렇게 구해진 Transition Matrix를 이용하여 위의 Forward, Backward를 수행하며 논문에서는 estimate된 T를 이용한 결과와, 실제 T를 이용한 결과 두가지 모두를 실험하였네요.
+이렇게 구해진 Transition Matrix를 이용하여 위의 Forward, Backward를 수행하며 논문에서는 estimate된 $$T$$를 이용한 결과와, 실제 $$T$$를 이용한 결과 두가지 모두를 실험하였네요.
 
-이 T Estimation에서 어떤 모델을 써야하는지에 대한 언급을 정확히 언급된 곳을 못찾아서, 필자가 간단히 코드를 이용해 실험해본 결과, validation accuracy가 가장 높게나오는 epoch의 모델을 early stopping을 이용하여 선택하는 것이 가장 실제와 비슷한 T를 구할 수 있었는데, 데이터셋 또는 실험마다 다를 순 있으니 여러 모델을 이용해서 실험해본 후 사용하여야 할 것 같습니다.
+이 $$T$$ Estimation에서 어떤 모델을 써야하는지에 대한 언급을 정확히 언급된 곳을 못찾아서, 필자가 간단히 코드를 이용해 실험해본 결과, validation accuracy가 가장 높게나오는 epoch의 모델을 early stopping을 이용하여 선택하는 것이 가장 실제와 비슷한 $$T$$를 구할 수 있었는데, 데이터셋 또는 실험마다 다를 순 있으니 여러 모델을 이용해서 실험해본 후 사용하여야 할 것 같습니다.
 
 ## 마무리
 첫 리뷰로 선택된 이 Loss Correction 논문은 2017년 논문이지만 요즘에도 종종 SOTA논문에서 언급되는 알고리즘입니다.
