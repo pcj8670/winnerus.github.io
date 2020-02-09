@@ -26,13 +26,12 @@ search: true
 
 # Build settings
 markdown: kramdown
-remote_theme: mmistakes/minimal-mistakes
+#remote_theme: mmistakes/minimal-mistakes
 highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
 
->>>>>>> 58f6ecc20e4d4f6c4f377ac75e9231cad3df7e48
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
