@@ -35,6 +35,7 @@ $$y$$ (True Label)에 대한 Loss와 같다는 것을 증명해줍니다.
 ## Forward
 Forward Correction Loss는 모델이 Prediction한 예측값에 곧바로 Transition Matrix를 곱합니다.
 이 역시 True Label에 대한 loss의 기대값과 forward loss의 기대값이 같음을 증명합니다.
+
 ![theorem2_1](/assets/imgs/losscorrection/img3.PNG)
 
 -------------
