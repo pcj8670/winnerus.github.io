@@ -18,7 +18,9 @@
 
 1. Backward Correction은 loss를 먼저 계산한 후, Transition Matrix의 inverse를 곱해줍니다.
 논문에서는 Theorem 1을 통해 이것이 $x$
-$$y$$
+$$
+y
+$$
 
 (현재가진 노이즈라벨)이 아닌 True Label에 대한 loss값과 같음을 증명해줍니다.
 
