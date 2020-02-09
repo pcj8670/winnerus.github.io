@@ -9,8 +9,8 @@
 CVPR 2017에 나왔던 논문인데 현재 나오는 Noisy label관련된 논문에도 종종 비교대상 알고리즘으로 언급되는 논문이라 관심있게 보았던 논문입니다.
 
 
-논문은 데이터셋에 포함된 Noise 정보 Label Transition Matrix를 안다는 가정하에 이를 이용해서 Cross Entropy loss의 최적화 방향을 True label방향으로 살짝 바꾸어줍니다.
-여기서 Label Transition Matrix란 클래스 개수가 $$C$$ 일때, $$C$$ x $$C$$ 크기의 Matrix이며, $$C_12$$는 라벨1이 라벨2로 바뀌어있을 확률을 나타내는 행렬입니다.
+논문은 데이터셋에 포함된 Noise 정보 Label Transition Matrix를 알고있다는 가정하에, 이를 이용해서 Cross Entropy loss의 최적화 방향을 True label방향으로 살짝 바꾸어줍니다.
+여기서 Label Transition Matrix란 클래스 개수가 $$C$$ 일때, $$C$$ x $$C$$ 크기의 Matrix이며, $$C_{12}$$는 라벨1이 라벨2로 바뀌어있을 확률을 나타내는 행렬입니다.
 논문은 이 Transition Matrix를 중점적으로 활용하여 loss를 교정합니다.
 
 논문은 총 3가지 내용을 얘기합니다.
