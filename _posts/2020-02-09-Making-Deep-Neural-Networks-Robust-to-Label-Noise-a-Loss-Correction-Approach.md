@@ -45,7 +45,7 @@ Forward Correction Loss는 모델이 Prediction한 예측값에 곧바로 Transi
 ![theorem3_1](./2020-02-09/img4.PNG)
 
 학습된 모델로 충분히 큰 특정 데이터 $$X$$ 에 대해 estimation을 수행하는데 이 $$X$$는 학습데이터 그대로 사용하여도 되고 같은 분포를 가진 데이터라면 라벨이 없는 데이터도 된다고 합니다.
-특정 Class $$C$$에 대해서 가장 높은 probability를 가진 Best Sample을 선정한 후, 이 샘플이 $$C$$가 아닌 다른 클래스 $$\grave{C}$$ 에 대해 가진 probability를 Noisy Ratio로 가정하고 $$T_C\grave{C}$$에 이 probability를 입력합니다.
+특정 Class $$C$$에 대해서 가장 높은 probability를 가진 Best Sample을 선정한 후, 이 샘플이 $$C$$가 아닌 다른 클래스 $$\grave{C}$$ 에 대해 가진 probability를 Noisy Ratio로 가정하고 $$T_{C\grave{C}}$$에 이 probability를 입력합니다.
 
 이렇게 구해진 Transition Matrix를 이용하여 위의 Forward, Backward를 수행하며 논문에서는 estimate된 $$T$$를 이용한 결과와, 실제 $$T$$를 이용한 결과 두가지 모두를 실험하였네요.
 
