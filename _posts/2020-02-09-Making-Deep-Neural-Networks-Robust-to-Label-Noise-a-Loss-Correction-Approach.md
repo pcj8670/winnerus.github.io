@@ -22,7 +22,7 @@ CVPR 2017에 나왔던 논문인데 현재 나오는 Noisy label관련된 논문
 ## Backward
 Backward Correction Loss는 Cross Entropy를 통해 계산 된 loss값에, Transition Matrix의 inverse를 곱해줍니다.(Transition Matrix가 Non-singular 함을 전제로 합니다)
 
-![theorem1_1](/_posts/2020-02-09/img1.PNG)
+![theorem1_1](/assets/imgs/img1.PNG)
 
 이를 논문의 Theorem 1에서 $$\tilde{y}$$ (Noise가 있는 현재 라벨)을 target으로 하는 loss에 Transition Matrix의 Inverse를 곱해준 식이 곧,
 $$y$$ (True Label)에 대한 Loss와 같다는 것을 증명해줍니다.
