@@ -3,7 +3,6 @@
 </script>
 
 
-# Making Deep Neural Networks Robust to Label Noise: a Loss Correction Approach
 ## 개요
 논문은 Noisy Label 환경에서 딥뉴럴넷을 잘 학습시키는 방법에 대한 논문입니다.
 많은 Noisy Label을 다루는 논문이 있지만, 매우 쉬운 방법을 통해 괜찮은 성능을 내는 방법 같습니다.
