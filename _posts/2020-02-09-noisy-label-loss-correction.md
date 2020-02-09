@@ -1,3 +1,6 @@
+
+
+
 # Making Deep Neural Networks Robust to Label Noise: a Loss Correction Approach
 ## 개요
 논문은 Noisy Label 환경에서 딥뉴럴넷을 잘 학습시키는 방법에 대한 논문입니다.
@@ -14,5 +17,16 @@
 
 
 1. Backward Correction은 loss를 먼저 계산한 후, Transition Matrix의 inverse를 곱해줍니다.
-논문에서는 Theorem 1을 통해 이것이 (현재가진 노이즈라벨)이 아닌 True Label에 대한 loss값과 같음을 증명해줍니다.
+논문에서는 Theorem 1을 통해 이것이 $$x$$
+\(z\)
+
+
+$$
+
+y
+
+$$
+
+
+(현재가진 노이즈라벨)이 아닌 True Label에 대한 loss값과 같음을 증명해줍니다.
 
