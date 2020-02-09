@@ -17,7 +17,8 @@
 
 
 1. Backward Correction은 loss를 먼저 계산한 후, Transition Matrix의 inverse를 곱해줍니다.
-논문에서는 Theorem 1을 통해 이것이 $x$
+논문에서는 Theorem 1을 통해 이것이 $$x$$
+\(z\)
 
 
 $$
